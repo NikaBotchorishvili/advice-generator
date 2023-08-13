@@ -12,7 +12,7 @@ function App() {
 	const [advice, setAdvice] = useState<null | Advice>(null);
 	async function generateAdvice() {
 		try {
-			const res = await fetch("https://api.adviceslip.com/advice");
+			const res = await fetch("https://api.adviceslip.com/advice", {cache: "no-cache"});
 			if (res.status !== 200)
 				throw new Error(`HTTP Error! status: ${res.status}`);
 			return await res.json();
@@ -40,7 +40,6 @@ function App() {
 	return (
 		<main className="flex w-screen h-screen items-center justify-center bg-darkBlue">
 			<section className="relative flex flex-col px-8  bg-darkGrayishBlue rounded-xl w-[90%] py-20 sm:max-w-[450px] sm:p-14 text-center gap-y-6 sm:gap-y-8 items-center">
-				<Suspense fallback={<h1>Loading</h1>}>
 					<h2 className="text-neonGreen font-manrope tracking-widest font-bold text-sm">
 						ADVICE #{advice?.id}
 					</h2>
@@ -48,7 +47,6 @@ function App() {
 					<p className="text-lightCyan font-manrope text-2xl font-bold">
 						"{advice?.advice}"
 					</p>
-				</Suspense>
 
 				<picture>
 					<source
