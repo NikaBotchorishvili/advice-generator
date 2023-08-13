@@ -1,7 +1,6 @@
 import desktopPatternDivider from "./assets/pattern-divider-desktop.svg";
 import mobilePatternDivider from "./assets/pattern-divider-desktop.svg";
 import iconDice from "./assets/icon-dice.svg";
-import axios from "axios";
 import { useEffect, useState, Suspense } from "react";
 
 type Advice = {
